@@ -26,8 +26,12 @@ Integer balance=0;
 <form action="SendMoney" method="post">
 <p>Please Enter customer account Number:</p><input type="text" name="customerAccNum" />
 <p>How much Amount you want to Transform :</p><input type="text" name="amountToTrans" />
-<button type="submit">Transform money</button>
+<button type="submit">Transform money</button><br>
 </form><br>
+<form action="home">
+<button type="submit">Log Out</button>
+</form>
+<!-- <a href="index.jsp">Log Out</a> -->
 
 </div>
 </body>

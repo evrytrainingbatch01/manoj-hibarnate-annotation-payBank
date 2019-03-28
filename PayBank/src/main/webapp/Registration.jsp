@@ -47,7 +47,8 @@
 				</tr>
 			</table>
 			<button type="submit">Submit</button>
-		</form>
+		</form><br>
+		<form action="home"><button type="submit">Cancel</button></form>
 		</div>
 </body>
 </html>
