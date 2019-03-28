@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,9 +19,10 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import payBank.entity.Account;
 import payBank.entity.Customer;
 
-public class AddMoney {
+public class AddMoney extends HttpServlet{
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -28,6 +30,7 @@ public class AddMoney {
 		//System.out.println("id--"+request.getAttribute("id"));customerAccNum
 		int custId=(Integer)request.getSession().getAttribute("customerId");
 		int custAccNum=(Integer)request.getSession().getAttribute("customerAccNum");
+		int custPrviousBalance=(Integer)request.getSession().getAttribute("customerBalance");
 		String stramount=request.getParameter("amount");
 		int amount=Integer.parseInt(stramount);
 		System.out.println("amount for add -- "+amount);
@@ -37,10 +40,14 @@ public class AddMoney {
     	SessionFactory factory = meta.getSessionFactoryBuilder().build();  
     	Session session = factory.openSession();  
     	Transaction t = session.beginTransaction(); 
-    	
-    	SQLQuery query= session.createNativeQuery("update account set acc_balance ="+amount+" where acc_accountNum="+custAccNum+" ");
+    	int updateAmount=custPrviousBalance+amount;
+    //	Account acc=new Account();
+    	//acc.setAccNum(custAccNum);
+    	//SQLQuery query= session.createNativeQuery("update account set acc_balance ="+amount+" where acc_accountNum="+custAccNum+" ");
 
-    		session.saveOrUpdate(query);  
+    		Account accObj = (Account) session.get(Account.class, custId);
+    		accObj.setAccBalance(updateAmount);
+    		session.update(accObj);
     		 t.commit();  
     		System.out.println("--Amount added Successfully--");   
     		//RequestDispatcher rd =	getServletContext().getRequestDispatcher("/transaction.jsp");

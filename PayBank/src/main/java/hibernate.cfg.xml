@@ -10,5 +10,6 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <mapping class="payBank.entity.Customer"/>
+         <mapping class="payBank.entity.Account"/>
     </session-factory>
 </hibernate-configuration>

@@ -13,7 +13,7 @@
 <form action="CheckBalance" method="post">
 <% 
 Integer balance=0;
- balance=(Integer)request.getAttribute("customerBalance"); %>
+ balance=(Integer)request.getSession().getAttribute("customerBalance"); %>
 <p>Check your Balance: <b><%= balance %></b></p>
 <button type="submit">Check Balance</button>
 </form><br>

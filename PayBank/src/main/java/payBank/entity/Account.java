@@ -1,14 +1,29 @@
 package payBank.entity;
 
-public class Account {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="account")
+public class Account {
+	@Id
+	@Column(name="acc_id")
 	private int accId;
+	@Column(name="acc_account_num")
 	private int accNum;
+	@Column(name="acc_customerId")
 	private int accCustomerId;
+	@Column(name="acc_balance")
 	private int accBalance;
+	@Column(name="acc_loan")
 	private int accLoan;
+	@Column(name="acc_approval")
 	private int accAproval;
+	@Column(name="acc_userType")
 	private int accUserType;
+	@Column(name="acc_loan_Amount_req")
 	private int accLoanRequested;
 	
 	public int getAccId() {

@@ -57,7 +57,8 @@ public class CheckBalance extends HttpServlet{
     			int intValue = (int)doubleValue;
     			acc.setAccBalance(intValue);
         		RequestDispatcher rd =	getServletContext().getRequestDispatcher("/transaction.jsp");
-        		request.setAttribute("customerBalance", acc.getAccBalance());
+        		//request.getSession().setAttribute("customerId", cust.getId()); 
+        		request.getSession().setAttribute("customerBalance", acc.getAccBalance());
         		rd.forward(request, response);
 
     		}
