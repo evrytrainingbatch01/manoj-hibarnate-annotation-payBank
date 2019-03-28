@@ -39,17 +39,14 @@ public class CheckBalance extends HttpServlet{
     	SessionFactory factory = meta.getSessionFactoryBuilder().build();  
     	Session session = factory.openSession();  
     	Transaction t = session.beginTransaction(); 
-    	
-		
-		//String loginName=request.getParameter("userName");
-		//String loginPassword=request.getParameter("password");
+
 		SQLQuery getquery= session.createSQLQuery("select * from account where acc_account_num="+custAccNum+" ");
 		List<Object[]>  custAccdetails=getquery.list();
 		Account acc=new  Account();
 		if(custAccdetails.isEmpty()) {
 			System.out.println("no data found");
 		}else {
-			System.out.println("continue...");
+			//System.out.println("continue...");
     		for(Object[] row : custAccdetails){    			
     			acc.setAccId(Integer.parseInt(row[0].toString()));
     			//acc.setAccBalance(Integer.parseInt(row[3].toString()));

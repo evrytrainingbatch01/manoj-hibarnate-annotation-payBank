@@ -6,11 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>LogIn</title>
 </head>
-<body>
-<%--       <jsp:include page="_header.jsp"></jsp:include>
-      <jsp:include page="_menu.jsp"></jsp:include> --%>
+<body style="background-color: rgba(0,0,128,0.3);">
  <div align="center" >
-      <h3>Login Page</h3>
+      <h3>!! -Login- !!</h3>
      <%--  <p style="color: red;">${errorString}</p> --%>
  
  
@@ -22,7 +20,7 @@
             </tr>
             <tr>
                <td>Password</td>
-               <td><input type="text" name="password" /> </td>
+               <td><input type="password" name="password" /> </td>
             </tr>
             <tr>
                <td colspan ="2">

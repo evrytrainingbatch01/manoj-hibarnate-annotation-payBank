@@ -27,7 +27,6 @@ import payBank.entity.Customer;
 public class Registration extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("inside Registration-------------------------------");
 		System.out.println("first name--- "+request.getParameter("firstname"));
 		String firstname=request.getParameter("firstname");
 		String lastName=request.getParameter("lastName");

@@ -27,9 +27,9 @@ public class SendMoney extends HttpServlet{
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("id--"+ (Integer)request.getSession().getAttribute("customerId"));
-		//System.out.println("id--"+request.getAttribute("id"));customerAccNum
-		int FromcustId=(Integer)request.getSession().getAttribute("customerId");
-		int FromcustAccNum=(Integer)request.getSession().getAttribute("customerAccNum");
+		//int FromcustId=(Integer)request.getSession().getAttribute("customerId");
+		//int FromcustAccNum=(Integer)request.getSession().getAttribute("customerAccNum");
+		
 		int FromcustPrviousBalance=(Integer)request.getSession().getAttribute("customerBalance");
 		int FromaccountId= (Integer)request.getSession().getAttribute("AccId");
 		String stramount=request.getParameter("amountToTrans");
@@ -58,7 +58,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     		System.out.println("Wrong Customer Account Number");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/transaction.jsp");
 			PrintWriter out= response.getWriter();
-			out.println("<h3><font color=red>Wrong Customer Account Number, Please Try Again !!</font></h3>");
+			out.println("<h3 style=\"background-color: rgba(0,0,128,0.3);\"><font color=red>Wrong Customer Account Number, Please Try Again !!</font></h3>");
 			rd.include(request, response);
     	}else {
     		
@@ -84,10 +84,9 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     		
     		 t.commit();  
     		System.out.println("--Amount Transformed Successfully--");   
-    		//RequestDispatcher rd =	getServletContext().getRequestDispatcher("/transaction.jsp");
     		RequestDispatcher rd = request.getRequestDispatcher("/transaction.jsp");
 			PrintWriter out= response.getWriter();
-			out.println("<h5><font color=green>Money Transformed Successfully</font></h5>");
+			out.println("<h3><font color=green>Money Transformed Successfully</font></h3>");
 			out.println("<p><font color=Red>Check YOUR Balance </font></p>");
     		rd.include(request, response);
     		session.close(); 

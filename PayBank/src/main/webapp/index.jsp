@@ -1,6 +1,6 @@
-<html>
-<body>
-<div align="center"  style="background-color: rgba(0,0,128,0.3);">
+<html >
+<body style="background-color: rgba(0,0,128,0.3);">
+<div align="center"  >
 
 <h2 style="align-content: center;">Welcome to Pay Bank !</h2>
 <%-- <jsp:include page="login.jsp"></jsp:include> --%>

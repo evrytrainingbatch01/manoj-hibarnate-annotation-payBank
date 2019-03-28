@@ -7,7 +7,7 @@
 <title>Welcome to Pay Bank</title>
 
 </head>
-<body>
+<body style="background-color: rgba(0,0,128,0.3);">
 <div align="center">
 <h1 style="color: green;">--Welcome to Pay Bank--</h1>
 <form action="CheckBalance" method="post">

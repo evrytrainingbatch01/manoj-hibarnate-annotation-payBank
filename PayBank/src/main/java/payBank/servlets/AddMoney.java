@@ -53,7 +53,7 @@ public class AddMoney extends HttpServlet{
     		//RequestDispatcher rd =	getServletContext().getRequestDispatcher("/transaction.jsp");
     		RequestDispatcher rd = request.getRequestDispatcher("/transaction.jsp");
 			PrintWriter out= response.getWriter();
-			out.println("<h5><font color=green>Money Added Successfully</font></h5>");
+			out.println("<h3><font color=green>Money Added Successfully</font></h3>");
 			out.println("<p><font color=red>Check YOUR Balance </font></p>");
     		rd.include(request, response);
     		session.close(); 

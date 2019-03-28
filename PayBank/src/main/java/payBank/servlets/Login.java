@@ -29,8 +29,8 @@ public class Login extends HttpServlet{
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("bloodgp--"+request.getParameter("userName"));
-		System.out.println("bloodgp--"+request.getParameter("password"));
+		System.out.println("userName--"+request.getParameter("userName"));
+		System.out.println("password--"+request.getParameter("password"));
 
 		String loginName=request.getParameter("userName");
 		String loginPassword=request.getParameter("password");
@@ -73,16 +73,7 @@ public class Login extends HttpServlet{
     			System.out.println(cust);
     			
     		}
-    		
-    		//System.out.println(custObj);
-    		
-    		/*if(custObj.isEmpty()) {
-			System.out.println("wrong username or password"+custObj);
-		}else {
-			System.out.println("login successful"+custObj);
-		}*/
-    		//session.save(obj);  
-    		// t.commit();  
+    		 
     		System.out.println("--Login  successful--");   
     		request.getSession().setAttribute("customerId", cust.getId()); 
     		request.getSession().setAttribute("customerAccNum", cust.getAccount_num()); 
@@ -93,61 +84,6 @@ public class Login extends HttpServlet{
     	}
         session.close(); 
         factory.close();  
-		
-		
-		
-		
-	//	String errorMsg = null;
-/*		if(email == null || email.equals("")){
-			errorMsg = "Email ID can't be null or empty.";
-		}
-		if(password == null || password.equals("")){
-			errorMsg = "Password can't be null or empty.";
-		}
-		if(name == null || name.equals("")){
-			errorMsg = "Name can't be null or empty.";
-		}
-		if(country == null || country.equals("")){
-			errorMsg = "Country can't be null or empty.";
-		}*/
-		
-/*		if(errorMsg != null){
-			//RequestDispatcher rd = getServletContext().getRequestDispatcher("/register.html");
-			PrintWriter out= response.getWriter();
-			out.println("<font color=red>"+errorMsg+"</font>");
-		//	rd.include(request, response);
-		}else{*/
-		
-/*		Connection con = (Connection) getServletContext().getAttribute("DBConnection");
-		PreparedStatement ps = null;
-		try {
-			ps = con.prepareStatement("insert into Users(name,email,country, password) values (?,?,?,?)");
-			ps.setString(1, name);
-			ps.setString(2, email);
-			ps.setString(3, country);
-			ps.setString(4, password);
-			
-			ps.execute();
-			
-			logger.info("User registered with email="+email);
-			
-			//forward to login page to login
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
-			PrintWriter out= response.getWriter();
-			out.println("<font color=green>Registration successful, please login below.</font>");
-			rd.include(request, response);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			logger.error("Database connection problem");
-			throw new ServletException("DB Connection problem.");
-		}finally{
-			try {
-				ps.close();
-			} catch (SQLException e) {
-				logger.error("SQLException in closing PreparedStatement");
-			}
-		}*/
-	//	}
 		
 	}
 	

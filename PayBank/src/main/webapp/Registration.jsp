@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Register</title>
 </head>
-<body>
+<body style="background-color: rgba(0,0,128,0.3);">
 <div align="center">
+		  <h3>!! -Register- !!</h3>
 		<form action="Registration" method="post">
 			<table style="with: 50%">
 				<tr>
