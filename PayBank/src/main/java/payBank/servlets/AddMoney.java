@@ -41,9 +41,7 @@ public class AddMoney extends HttpServlet{
     	Session session = factory.openSession();  
     	Transaction t = session.beginTransaction(); 
     	int updateAmount=custPrviousBalance+amount;
-    //	Account acc=new Account();
-    	//acc.setAccNum(custAccNum);
-    	//SQLQuery query= session.createNativeQuery("update account set acc_balance ="+amount+" where acc_accountNum="+custAccNum+" ");
+    
 
     		Account accObj = (Account) session.get(Account.class, custId);
     		accObj.setAccBalance(updateAmount);
@@ -54,7 +52,7 @@ public class AddMoney extends HttpServlet{
     		RequestDispatcher rd = request.getRequestDispatcher("/transaction.jsp");
 			PrintWriter out= response.getWriter();
 			out.println("<h5><font color=green>Money Added Successfully</font></h5>");
-			out.println("<p><font >Check YOUR Balance </font></p>");
+			out.println("<p><font color=red>Check YOUR Balance </font></p>");
     		rd.include(request, response);
     		session.close(); 
     		factory.close();  
