@@ -1,8 +1,13 @@
 package payBank.entity;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="customer")
@@ -22,13 +27,16 @@ public class Customer {
 	private int account_num;
 	private int balance;
 	private int acc_userType;
-	private String datetime;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="reg_date")
+	private Date datetime;
 	
 
-	public String getDatetime() {
+
+	public Date getDatetime() {
 		return datetime;
 	}
-	public void setDatetime(String datetime) {
+	public void setDatetime(Date datetime) {
 		this.datetime = datetime;
 	}
 	public int getId() {

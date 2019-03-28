@@ -9,7 +9,7 @@
 <body>
 <%--       <jsp:include page="_header.jsp"></jsp:include>
       <jsp:include page="_menu.jsp"></jsp:include> --%>
- 
+ <div align="center" >
       <h3>Login Page</h3>
      <%--  <p style="color: red;">${errorString}</p> --%>
  
@@ -32,10 +32,8 @@
             </tr>
          </table>
       </form>
- 
-<!--       <p style="color:blue;">User Name: tom, password: tom001 or jerry/jerry001</p> -->
- 
-     <%--  <jsp:include page="_footer.jsp"></jsp:include> --%>
+ </div>
+
 
 </body>
 </html>

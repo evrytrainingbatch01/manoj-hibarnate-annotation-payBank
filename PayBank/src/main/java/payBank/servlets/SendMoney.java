@@ -31,7 +31,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		int FromcustId=(Integer)request.getSession().getAttribute("customerId");
 		int FromcustAccNum=(Integer)request.getSession().getAttribute("customerAccNum");
 		int FromcustPrviousBalance=(Integer)request.getSession().getAttribute("customerBalance");
-		
+		int FromaccountId= (Integer)request.getSession().getAttribute("AccId");
 		String stramount=request.getParameter("amountToTrans");
 		int tocustAmount=Integer.parseInt(stramount);
 		System.out.println("amount for add -- "+tocustAmount);
@@ -74,7 +74,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
     		}
     		
-    		Account FromAccObj = (Account) session.get(Account.class, FromcustId);
+    		Account FromAccObj = (Account) session.get(Account.class, FromaccountId);
     		FromAccObj.setAccBalance(updateAmount);
     		session.update(FromAccObj);
     		

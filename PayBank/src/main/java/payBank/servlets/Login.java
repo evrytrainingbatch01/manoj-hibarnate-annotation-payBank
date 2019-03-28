@@ -22,6 +22,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.InterningXmlVisitor;
 
+import payBank.entity.Account;
 import payBank.entity.Customer;
 
 public class Login extends HttpServlet{
@@ -40,15 +41,11 @@ public class Login extends HttpServlet{
     	Session session = factory.openSession();  
     	Transaction t = session.beginTransaction(); 
     	
-    	Customer obj=new Customer();
-    	SQLQuery query= session.createNativeQuery("select * from customer where firstname='"+loginName+"' and password='"+loginPassword+"' ");
+    	SQLQuery query= session.createNativeQuery("select cust.id,cust.firstname,cust.lastname,cust.age,cust.city,cust.country,cust.mobile_num,cust.email_id,cust.password,cust.account_num,cust.balance,cust.acc_userType,acc.acc_id from customer as cust join account as acc on cust.account_num=acc.acc_account_num where cust.firstname='"+loginName+"' and cust.password='"+loginPassword+"' ");
 
-    	/*List<Map<String,Object>> custlist= query.list();
-    	for (Map<String, Object> map : custlist) {
-			System.out.println("map--"+map);
-		}*/
     	
     	Customer cust = new Customer();
+    	Account acc=new Account();
     	List<Object[]> rows = query.list();
     	if(rows.isEmpty()) {
     		System.out.println("wrong username or password");
@@ -59,9 +56,7 @@ public class Login extends HttpServlet{
     	}else {
     		
     		for(Object[] row : rows){
-    			//emp.setId(Long.parseLong(row[0].toString()));
-    			//	emp.setName(row[1].toString());
-    			//emp.setSalary(Double.parseDouble(row[2].toString()));
+
     			cust.setId(Integer.parseInt(row[0].toString()));
     			cust.setFirstname(row[1].toString());
     			cust.setLastname(row[2].toString());
@@ -71,10 +66,12 @@ public class Login extends HttpServlet{
     			cust.setMobile_num(row[6].toString());
     			cust.setEmail_id(row[7].toString());
     			//cust.setDatetime(row[8]);
-    			cust.setPassword(row[9].toString());
-    			cust.setAccount_num(Integer.parseInt(row[10].toString()));
-    			cust.setBalance(Integer.parseInt(row[11].toString()));
+    			cust.setPassword(row[8].toString());
+    			cust.setAccount_num(Integer.parseInt(row[9].toString()));
+    			cust.setBalance(Integer.parseInt(row[10].toString()));
+    			acc.setAccId(Integer.parseInt(row[12].toString()));
     			System.out.println(cust);
+    			
     		}
     		
     		//System.out.println(custObj);
@@ -89,6 +86,7 @@ public class Login extends HttpServlet{
     		System.out.println("--Login  successful--");   
     		request.getSession().setAttribute("customerId", cust.getId()); 
     		request.getSession().setAttribute("customerAccNum", cust.getAccount_num()); 
+    		request.getSession().setAttribute("AccId", acc.getAccId());
     		RequestDispatcher rd =	getServletContext().getRequestDispatcher("/transaction.jsp");
     		//RequestDispatcher rd = request.getRequestDispatcher("/transaction.jsp");
     		rd.forward(request, response);

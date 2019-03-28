@@ -31,6 +31,8 @@ public class AddMoney extends HttpServlet{
 		int custId=(Integer)request.getSession().getAttribute("customerId");
 		int custAccNum=(Integer)request.getSession().getAttribute("customerAccNum");
 		int custPrviousBalance=(Integer)request.getSession().getAttribute("customerBalance");
+		int accountId= (Integer)request.getSession().getAttribute("AccId");
+		System.out.println("accountId"+accountId);
 		String stramount=request.getParameter("amount");
 		int amount=Integer.parseInt(stramount);
 		System.out.println("amount for add -- "+amount);
@@ -41,9 +43,9 @@ public class AddMoney extends HttpServlet{
     	Session session = factory.openSession();  
     	Transaction t = session.beginTransaction(); 
     	int updateAmount=custPrviousBalance+amount;
-    
+    System.out.println("updateAmount--- "+updateAmount);
 
-    		Account accObj = (Account) session.get(Account.class, custId);
+    		Account accObj = (Account) session.get(Account.class, accountId);
     		accObj.setAccBalance(updateAmount);
     		session.update(accObj);
     		 t.commit();  
