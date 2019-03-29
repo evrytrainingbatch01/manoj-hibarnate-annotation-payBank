@@ -3,10 +3,14 @@ package payBank.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="account")
+
+// Hibernate Hierarchy -Table per Subclass
+@PrimaryKeyJoinColumn(name="acc_customerId")
 public class Account {
 	@Id
 	@Column(name="acc_id")

@@ -45,6 +45,7 @@ public class Registration extends HttpServlet{
     	SessionFactory factory = meta.getSessionFactoryBuilder().build();  
     	Session session = factory.openSession();  
     	Transaction t = session.beginTransaction(); 
+    	try {
     	Customer cust=new Customer();
     	
     	cust.setFirstname(firstname);
@@ -78,8 +79,13 @@ public class Registration extends HttpServlet{
 		PrintWriter out= response.getWriter();
 		out.println("<h3><font color=Green>Account Created Successfully</font></h3>");
 		rd.include(request, response);
-        factory.close();  
-        session.close(); 
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			factory.close();  
+			session.close(); 
+		}
 		
 		
 	}

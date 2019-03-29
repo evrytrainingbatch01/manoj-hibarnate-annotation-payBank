@@ -36,6 +36,8 @@ public class AddMoney extends HttpServlet{
 		String stramount=request.getParameter("amount");
 		int amount=Integer.parseInt(stramount);
 		System.out.println("amount for add -- "+amount);
+			
+		
     	StandardServiceRegistry sr= new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
     	Metadata meta = new MetadataSources(sr).getMetadataBuilder().build(); 
     	
@@ -44,6 +46,7 @@ public class AddMoney extends HttpServlet{
     	Transaction t = session.beginTransaction(); 
     	int updateAmount=custPrviousBalance+amount;
     System.out.println("updateAmount--- "+updateAmount);
+    try {
 
     		Account accObj = (Account) session.get(Account.class, accountId);
     		accObj.setAccBalance(updateAmount);
@@ -56,8 +59,13 @@ public class AddMoney extends HttpServlet{
 			out.println("<h3><font color=green>Money Added Successfully</font></h3>");
 			out.println("<p><font color=red>Check YOUR Balance </font></p>");
     		rd.include(request, response);
-    		session.close(); 
-    		factory.close();  
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close(); 
+			factory.close();  
+			
+		}
     	}
 		
 		
